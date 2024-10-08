@@ -1,0 +1,19 @@
+{
+  "name": "tcc2",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run generate && npm run compile",
+    "generate": "node --no-deprecation generate.js",
+    "compile": "bash ./compile.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "openai": "^4.66.1"
+  }
+}

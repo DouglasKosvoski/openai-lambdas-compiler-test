@@ -1,0 +1,5 @@
+node_modules/
+.env
+responses/*.class
+target/*
+temp/*
