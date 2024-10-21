@@ -1,5 +1,10 @@
 # An analysis of OpenAI models on Java Lambda expressions generation for testing Java compilers
 
+## Instalation
+``` bash
+$ npm install
+```
+
 ## Generate codes
 
 ``` bash
@@ -13,7 +18,7 @@ output:
 ## Compilation
 
 ``` bash
-$ npm run compile
+$ npm run compile <openjdk> <oraclejdk>
 
 output:
 

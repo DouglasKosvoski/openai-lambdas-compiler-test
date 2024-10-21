@@ -1,5 +1,34 @@
 #!/usr/bin/bash
 
+# Function to display usage information
+function display_usage() {
+    echo "Usage: $0 <compiler>"
+    echo "Available compilers: openjdk, oraclejdk"
+}
+
+
+# Compilers Path
+openjdk=/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin/javac
+oraclejdk=/usr/lib/jvm/jdk-23.0.1-oracle-x64/bin/javac
+
+
+# Check if a compiler argument is provided
+if [ $# -eq 0 ]; then
+    display_usage;
+    exit 1;
+fi
+
+# Set the compiler based on the argument
+if [ "$1" == "openjdk" ]; then
+    compiler_active=$openjdk
+elif [ "$1" == "oraclejdk" ]; then
+    compiler_active=$oraclejdk
+else
+    echo "Invalid compiler specified."
+    echo "Available compilers: openjdk, oraclejdk"
+    exit 1
+fi
+
 # Define color codes
 RED='\033[0;31m'      # Red
 GREEN='\033[0;32m'    # Green
@@ -50,7 +79,7 @@ for FILE in $JAVA_FILES; do
 
     # Compile the copied Main.java file
     printf "\nCompiling %s...\n" "$TEMP_FILE"
-    if javac -d ./target "$TEMP_FILE"; then
+    if $compiler_active -d ./target "$TEMP_FILE"; then
         printf "${GREEN}Successfully compiled: %s to %s${RESET}\n" "$TEMP_FILE" "$OUT_FILE"
         SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
     else
@@ -80,3 +109,7 @@ if [ "$FILE_COUNT" -gt 0 ]; then
 else
     printf "${YELLOW}No files to compile.${RESET}\n"
 fi
+
+# Print the selected compiler
+printf "\nCompiled with: "
+echo "$compiler_active"
