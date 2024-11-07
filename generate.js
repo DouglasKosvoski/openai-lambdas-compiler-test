@@ -34,9 +34,11 @@ const run = async (generations=0) => {
 
     const model = "gpt-4o-mini";
 
+    const feature = "Pattern Matching for switch in Java";
+
     const instruction = `
         You are an expert Java programmer.
-        Your task is to provide accurate and 100% compilable examples of Java lambda expressions.
+        Your task is to push the limits and explore the boundaries of ${feature} with the intention to break the compiler apart to find issues and bugs.
         Return only the Java code, with no explanations nor comments.
         Include all necessary imports to successfully compile the generated code without issues.
         Ensure that the main class is named Main and includes a valid main method for execution.
@@ -45,8 +47,7 @@ const run = async (generations=0) => {
     `;
 
     const query = `
-        Generate Java lambda expressions of varying sizes that demonstrate various use cases.
-        Provide multiple distinct examples that showcase different functionalities and use cases of lambda expressions in Java.
+        ${feature} of varying sizes that demonstrate various use cases and stretch the limits of the feature.
         Ensure that the main class is named Main and all the imports are included.`;
 
     for (let i = 1; i <= generations; i++) {
@@ -73,7 +74,7 @@ const main = async () => {
         return;
     }
 
-    await run(40);
+    await run(50);
 }
 
 

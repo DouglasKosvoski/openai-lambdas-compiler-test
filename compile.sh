@@ -53,12 +53,36 @@ display_summary() {
     echo "$compiler_active"
 }
 
+save_results() {
+    # Inform that the compilation has finished
+    printf "\nCompilation finished at: %s \n" "$(date)"
+    printf "Total time taken: %d seconds. \n" "$DURATION"
+
+    # Display summary of results
+    printf "\nSummary of Compilation Results: \n"
+    printf "Total files: %d \n" "$FILE_COUNT"
+    printf "Successfully compiled: %d \n" "$SUCCESS_COUNT"
+    printf "Failed compilations: %d \n" "$FAILURE_COUNT"
+
+    # Calculate and display percentage of failed compilations
+    if [ "$FILE_COUNT" -gt 0 ]; then
+        FAILURE_PERCENTAGE=$(awk "BEGIN {printf \"%.2f\", ($FAILURE_COUNT * 100) / $FILE_COUNT}")
+        printf "Failure percentage: %.2f%% \n" "$FAILURE_PERCENTAGE"
+    else
+        printf "No files to compile. \n"
+    fi
+
+    # Print the selected compiler
+    printf "\nCompiled with: "
+    echo "$compiler_active"
+}
+
 compile() {
     # Inform that the compilation is starting
     printf "\nCompilation started at: %s\n\n" "$(date)"
 
     # Find all .java files
-    JAVA_FILES=$(find ./responses -name '*.java')
+    JAVA_FILES=$(find $1 -name '*.java')
 
     # If no files are found, exit the script
     if [ -z "$JAVA_FILES" ]; then
@@ -137,13 +161,15 @@ main() {
     # Start timer
     START_TIME=$(date +%s)
 
-    compile
+    RESPONSES_PATH="responses_pattern_matching"
+    compile "./$RESPONSES_PATH"
 
     # End timer
     END_TIME=$(date +%s)
     DURATION=$((END_TIME - START_TIME))
 
     display_summary
+    save_results >> "results/$RESPONSES_PATH-$1.log"
 }
 
 main "$@"

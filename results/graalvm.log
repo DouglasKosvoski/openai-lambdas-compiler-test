@@ -1,0 +1,42 @@
+
+
+--- Lambda Expressions in Java -> old prompt
+Compilation finished at: Wed Nov  6 09:44:45 PM -03 2024 
+Total time taken: 67 seconds. 
+
+Summary of Compilation Results: 
+Total files: 100 
+Successfully compiled: 89 
+Failed compilations: 11 
+Failure percentage: 11.00% 
+
+Compiled with: /usr/lib/jvm/graalvm-jdk-23.0.1/bin/javac
+
+
+
+--- Lambda Expressions in Java -> new prompt
+Compilation finished at: Wed Nov  6 09:43:32 PM -03 2024 
+Total time taken: 35 seconds. 
+
+Summary of Compilation Results: 
+Total files: 50 
+Successfully compiled: 41 
+Failed compilations: 9 
+Failure percentage: 18.00% 
+
+Compiled with: /usr/lib/jvm/graalvm-jdk-23.0.1/bin/javac
+
+
+
+--- Pattern Matching for switch in Java
+Compilation finished at: Wed Nov  6 10:09:07 PM -03 2024 
+Total time taken: 25 seconds. 
+
+Summary of Compilation Results: 
+Total files: 50 
+Successfully compiled: 18 
+Failed compilations: 32 
+Failure percentage: 64.00% 
+
+Compiled with: /usr/lib/jvm/graalvm-jdk-23.0.1/bin/javac
+
