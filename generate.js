@@ -37,16 +37,17 @@ const run = async (generations=0) => {
     const instruction = `
         You are an expert Java programmer.
         Your task is to provide accurate and 100% compilable examples of Java lambda expressions.
-        Return only the Java code, with no explanations or comments.
-        Include all necessary imports to successfully compile the generated code wihtout issues.
+        Return only the Java code, with no explanations nor comments.
+        Include all necessary imports to successfully compile the generated code without issues.
         Ensure that the main class is named Main and includes a valid main method for execution.
         Double check everything before outputting the source code.
+        You can be very creative and explore the boundaries of the language to generate the expressions
     `;
 
     const query = `
-        Generate Java lambda expressions of varing sizes that demonstrate various use cases.
+        Generate Java lambda expressions of varying sizes that demonstrate various use cases.
         Provide multiple distinct examples that showcase different functionalities and use cases of lambda expressions in Java.
-        Ensure that the main class is named Main and the total lines of code does not exceed 30 lines`;
+        Ensure that the main class is named Main and all the imports are included.`;
 
     for (let i = 1; i <= generations; i++) {
         console.log(`Generating: ${i} / ${generations}`);
@@ -67,9 +68,12 @@ const main = async () => {
 
     const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? ''
 
-    if (OPENAI_API_KEY) {
-        await run(10);
+    if (!OPENAI_API_KEY) {
+        console.error("Please set the OPENAI_API_KEY environment variable");
+        return;
     }
+
+    await run(40);
 }
 
 

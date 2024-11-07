@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm run generate && npm run compile",
-    "generate": "node --no-deprecation generate.js",
+    "generate": "clear && node --no-deprecation generate.js",
     "compile": "bash ./compile.sh"
   },
   "keywords": [],
